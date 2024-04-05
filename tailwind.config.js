@@ -1,4 +1,5 @@
 import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -7,9 +8,13 @@ export default {
     colors: {
       theme: colors.violet,
       gray: colors.slate,
-      dark: '#151923',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        Yekan: ['Yekan', ...defaultTheme.fontFamily.sans],
+        Samim: ['Samim', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [],
 };

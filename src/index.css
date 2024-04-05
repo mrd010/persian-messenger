@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Yekan;
+    src: url('./assets//fonts/yekan/Yekan.woff');
+  }
+  @font-face {
+    font-family: Samim;
+    src: url('./assets//fonts/samim/Samim.woff');
+  }
+  @font-face {
+    font-family: Samim;
+    src: url('./assets//fonts/samim/Samim-Bold.woff');
+    font-weight: bold;
+  }
+}
