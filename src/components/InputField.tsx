@@ -4,17 +4,22 @@ type InputFieldProps = {
   name: string;
   labelText: string;
   type: HTMLInputTypeAttribute;
+  value: string;
+  isValid?: boolean;
+  onInput: (value: string) => void;
 };
 
-export const InputField = ({ name, labelText, type = 'text' }: InputFieldProps) => {
+export const InputField = ({
+  name,
+  labelText,
+  type = 'text',
+  value,
+  isValid = true,
+  onInput,
+}: InputFieldProps) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(true);
-  const [value, setValue] = useState('');
 
-  const handleChangeValue = (value: string) => {
-    setValue(value);
-    setIsEmpty(value.length === 0);
-  };
+  const isEmpty = value.length === 0;
 
   //   input label get lifted if input is not empty or its focused
   return (
@@ -27,7 +32,7 @@ export const InputField = ({ name, labelText, type = 'text' }: InputFieldProps) 
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={(e) => {
-          handleChangeValue(e.target.value);
+          onInput(e.target.value);
         }}
         value={value}
       />
