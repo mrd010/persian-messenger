@@ -28,7 +28,7 @@ export const InputField = ({
         type={type}
         name={name}
         id={name}
-        className={`w-full rounded-full border-2 border-theme-500 bg-gray-50  px-5 py-2 font-mono text-lg font-light caret-theme-400 text-gray-900 outline-none`}
+        className={`w-full rounded-full border-2 bg-gray-50 px-5 py-2 font-mono text-lg  caret-theme-400 outline-none ${isValid ? 'border-theme-500 text-gray-900 font-light' : 'border-error-500 text-error-500 font-bold'}`}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={(e) => {
@@ -38,7 +38,7 @@ export const InputField = ({
       />
       <label
         htmlFor={name}
-        className={`absolute right-4 grid h-full items-center font-extrabold text-theme-500 transition-transform ${isFocused || !isEmpty ? '-translate-y-6 scale-75' : ''}`}
+        className={`absolute right-4 grid h-full items-center font-extrabold  transition-transform ${isFocused || !isEmpty ? '-translate-y-6 scale-75' : ''} ${isValid ? 'text-theme-500' : 'text-error-500'}`}
       >
         <span className="rounded-full bg-gray-50 px-2">{labelText}</span>
       </label>
