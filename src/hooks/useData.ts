@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type UseEffectReturn = () => void;
 type UseDataReturnType<DataType> = {
@@ -7,10 +7,15 @@ type UseDataReturnType<DataType> = {
   isError: boolean;
 };
 
-export const useData = <DataType>(url: string): UseDataReturnType<DataType> => {
+export const useData = <DataType>(
+  url: string,
+  triggerString: string = ''
+): UseDataReturnType<DataType> => {
   const [data, setData] = useState<DataType | null>(null);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const resetTimer = useRef<number | null>(null);
 
   useEffect((): UseEffectReturn => {
     let ignore = false;
@@ -32,12 +37,28 @@ export const useData = <DataType>(url: string): UseDataReturnType<DataType> => {
       }
     };
 
-    if (url.length) {
+    if (url.length && triggerString) {
       fetchData();
     }
 
     return (): boolean => (ignore = true);
-  }, [url]);
+  }, [url, triggerString]);
+
+  //   reset error after a while
+  useEffect(() => {
+    if (isError) {
+      resetTimer.current = setTimeout(() => {
+        setIsError(false);
+      }, 3000);
+    }
+
+    // cleaner
+    return () => {
+      if (resetTimer.current) {
+        clearTimeout(resetTimer.current);
+      }
+    };
+  }, [isError]);
 
   return { data, isLoading, isError };
 };
