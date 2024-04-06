@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { InputField } from './InputField';
 
 type GetPhoneProps = {
-  hidden: boolean;
-  isLoadingData: boolean;
   onValidSubmit: (validPhoneNumber: string) => void;
 };
 
-export const GetPhone = ({ hidden, isLoadingData, onValidSubmit }: GetPhoneProps) => {
+export const GetPhone = ({ onValidSubmit }: GetPhoneProps) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isValid, setIsValid] = useState(true);
   // error for submit
@@ -41,9 +39,7 @@ export const GetPhone = ({ hidden, isLoadingData, onValidSubmit }: GetPhoneProps
   };
 
   return (
-    <div
-      className={`grid size-full items-center content-center transition-opacity duration-500 gap-4 ${hidden ? 'opacity-0' : 'opacity-100'}`}
-    >
+    <>
       <p className={`text-center my-2 font-bold ${isValid ? 'text-theme-500' : 'text-error-500'}`}>
         لطفا شماره موبایل خود را وارد نمایید.
       </p>
@@ -65,8 +61,8 @@ export const GetPhone = ({ hidden, isLoadingData, onValidSubmit }: GetPhoneProps
             e.preventDefault();
             handleSubmitPhoneNumber();
           }}
-          className="text-theme-50 rounded-full py-2 bg-gradient-to-tr from-theme-500 to-theme-700 shadow-sm font-bold transition-opacity disabled:opacity-25 disabled:from-gray-500/80 disabled:to-gray-700/80"
-          disabled={!isValid || isLoadingData}
+          className="text-theme-50 grid place-items-center rounded-full py-2 bg-gradient-to-tr from-theme-500 to-theme-700 shadow-sm font-bold transition-opacity disabled:opacity-25 disabled:from-gray-500/80 disabled:to-gray-700/80"
+          disabled={!isValid}
         >
           ورود
         </button>
@@ -76,6 +72,6 @@ export const GetPhone = ({ hidden, isLoadingData, onValidSubmit }: GetPhoneProps
           رمز عبور خود را فراموش کرده ام
         </button>
       </div>
-    </div>
+    </>
   );
 };
