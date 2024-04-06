@@ -30,4 +30,9 @@
   input:-webkit-autofill {
     -webkit-text-fill-color: rgb(15, 23, 42) !important;
   }
+
+  .themed-icon {
+    filter: brightness(0) saturate(100%) invert(32%) sepia(66%) saturate(1725%) hue-rotate(237deg)
+      brightness(108%) contrast(93%);
+  }
 }
