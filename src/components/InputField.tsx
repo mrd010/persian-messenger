@@ -23,7 +23,7 @@ export const InputField = ({
 
   //   input label get lifted if input is not empty or its focused
   return (
-    <div className="relative grid w-full font-Samim text-gray-950">
+    <div className="relative grid w-full font-Samim text-gray-950" dir="ltr">
       <input
         type={type}
         name={name}
