@@ -8,6 +8,7 @@ export default {
     colors: {
       theme: colors.violet,
       gray: colors.slate,
+      error: colors.rose,
     },
     extend: {
       fontFamily: {
