@@ -33,7 +33,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <form action="" className="flex flex-col flex-nowrap gap-5">
+    <form action="" className="flex flex-col flex-nowrap gap-4">
       <InputField
         name="phoneNumber"
         labelText="شماره موبایل"
