@@ -1,4 +1,3 @@
-import { InputField } from './InputField';
 import { usePhoneNumber } from '../hooks/usePhoneNumber';
 import { PhoneInput } from './PhoneInput';
 import { FormSubmitButton } from './FormSubmitButton';

@@ -37,7 +37,7 @@ export const Login = () => {
   return (
     <div className="fixed size-full p-4 bg-gray-50">
       <div className="absolute left-0 bottom-4 w-full">
-        <ErrorOverlay visible={true}></ErrorOverlay>
+        <ErrorOverlay visible={isError}></ErrorOverlay>
       </div>
       <LoginForm hidden={status !== 'login-phone'}>
         <GetPhone onValidSubmit={handleGetPhoneNumber}></GetPhone>
